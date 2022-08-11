@@ -58,18 +58,17 @@ int main ()
       char filename[256];
 
       if (f == 0)
-        snprintf(filename, sizeof(filename), "../Data/nwalls%d.dzn", n);
+        snprintf(filename, sizeof(filename), "nwalls%d.dzn", n);
       else
-        snprintf(filename, sizeof(filename), "../Data/2nwalls%d.dzn", n);
+        snprintf(filename, sizeof(filename), "2nwalls%d.dzn", n);
 
       FILE *fp = fopen(filename, "w");
 
       if (NULL != fp)
       {
-        fprintf(fp, "array [1..%d, 1..%d] of int: w;\n\n", n, n);
         fprintf(fp, "w =\n");
 
-        // Generate 5 rooms with n Rooms each.
+        // Generate 5 rooms with n or 2n walls each.
         for (int r = 0; r < 5; ++r)
         {
           for (int i = 0; i < n; ++i)
@@ -125,22 +124,45 @@ int main ()
             ++w;
           }
 
-          for (int i = 0; i < n; ++i)
+          // Print without Minzinc comment.
+          if(r == 0)
           {
-            for (int j = 0; j < n; ++j)
+            for (int i = 0; i < n; ++i)
             {
-              if (i == 0 && j == 0)
-                fprintf(fp, "%%[\n");
+              for (int j = 0; j < n; ++j)
+              {
+                if (i == 0 && j == 0)
+                  fprintf(fp, "[|");
 
-              if (j == 0)
-                fprintf(fp, "%%|");
+                if (i != 0 && j == 0)
+                  fprintf(fp, " |");
 
-              fprintf(fp, "%d,", room[i][j]);
+                fprintf(fp, "%d,", room[i][j]);
+              }
+              fprintf(fp, "\n");
             }
-            fprintf(fp, "\n");
-          }
 
-          fprintf(fp, "%%|];\n\n");
+            fprintf(fp, " |];\n\n");
+          }
+          else
+          {
+            for (int i = 0; i < n; ++i)
+            {
+              for (int j = 0; j < n; ++j)
+              {
+                if (i == 0 && j == 0)
+                  fprintf(fp, "%%[|");
+
+                if (i != 0 && j == 0)
+                  fprintf(fp, "%% |");
+
+                fprintf(fp, "%d,", room[i][j]);
+              }
+              fprintf(fp, "\n");
+            }
+
+            fprintf(fp, "%% |];\n\n");
+          }
         }
 
         // Try also without walls.
@@ -149,9 +171,9 @@ int main ()
           for (int j = 0; j < n; ++j)
           {
             if (i == 0 && j == 0)
-              fprintf(fp, "%%[\n");
-            if (j == 0)
-              fprintf(fp, "%%|");
+              fprintf(fp, "%%[|");
+            if (i != 0 && j == 0)
+              fprintf(fp, "%% |");
 
             fprintf(fp, "0,");
           }
@@ -159,7 +181,8 @@ int main ()
           fprintf(fp, "\n");
         }
 
-        fprintf(fp, "%%|];\n\n");
+        fprintf(fp, "%% |];\n\n");
+
         fclose(fp);
       }
       else
