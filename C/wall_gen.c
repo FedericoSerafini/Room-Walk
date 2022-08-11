@@ -4,12 +4,11 @@
 #include <stdbool.h>
 
 bool
-room_fits (const int n,
+wall_fits (const int n,
            const int room[n][n],
            const int x, const int y, const int k,
            const bool orientation)
 {
-  //printf("Room_fits\n");
 
   if (x == 0 && y == 0)
     return false;
@@ -31,7 +30,7 @@ room_fits (const int n,
 }
 
 void
-room_build (const int n,
+wall_build (const int n,
             int room[n][n],
             const int x, const int y, const int k,
             const bool orientation)
@@ -51,48 +50,45 @@ room_build (const int n,
 
 int main ()
 {
-  for (int n = 6; n < 16; n +=  2)
+  for (int f = 0; f < 2; ++f)
   {
-    int room[n][n];
-    char filename[256];
-    snprintf(filename, sizeof(filename), "nwalls%d.txt", n);
-    FILE *fp = fopen(filename, "w");
-
-    if (NULL != fp)
+    for (int n = 6; n < 16; n +=  2)
     {
-      // Generate 5 rooms with n Rooms each.
-      for (int r = 0; r < 5; ++r)
+      int room[n][n];
+      char filename[256];
+
+      if (f == 0)
+        snprintf(filename, sizeof(filename), "../Data/nwalls%d.dzn", n);
+      else
+        snprintf(filename, sizeof(filename), "../Data/2nwalls%d.dzn", n);
+
+      FILE *fp = fopen(filename, "w");
+
+      if (NULL != fp)
       {
-        for (int i = 0; i < n; ++i)
-          for (int j = 0; j < n; ++j)
-            room[i][j] = 0;
+        fprintf(fp, "array [1..%d, 1..%d] of int: w;\n\n", n, n);
+        fprintf(fp, "w =\n");
 
-        printf("n: %d, r: %d\n", n, r);
-        bool orientation = false;
-        int wall_count = 0;
-        int x, y = 0;
-
-        while (wall_count < n)
+        // Generate 5 rooms with n Rooms each.
+        for (int r = 0; r < 5; ++r)
         {
-          int k = rand() % (n / 2) + 1;
+          for (int i = 0; i < n; ++i)
+            for (int j = 0; j < n; ++j)
+              room[i][j] = 0;
 
-          if (orientation) // Horizontal.
-          {
-            x = rand() % n; // Room starting row.
-            y = rand() % (n - k); // Room starting column.
-          }
-          else // Vertical.
-          {
-            x = rand() % (n - k); // Room starting row.
-            y = rand() % n; // Room starting column.
-          }
+          bool orientation = false;
+          int w = 0;
+          int x, y = 0;
+          int wall_number;
 
-          while (!room_fits(n, room, x, y, k, orientation))
-          {
-            if (k > 1)
-              --k;
+          if (f == 0)
+            wall_number = n;
+          else
+            wall_number = 2*n;
 
-            orientation = !orientation;
+          while (w < wall_number)
+          {
+            int k = rand() % (n / 2) + 1;
 
             if (orientation) // Horizontal.
             {
@@ -105,39 +101,71 @@ int main ()
               y = rand() % n; // Room starting column.
             }
 
-            for(int a = 0; a < n; ++a)
+            while (!wall_fits(n, room, x, y, k, orientation))
             {
-              for(int b = 0; b < n; ++b)
-                printf("%d, ", room[a][b]);
-              printf("\n");
+              if (k > 1)
+                --k;
+
+              orientation = !orientation;
+
+              if (orientation) // Horizontal.
+              {
+                x = rand() % n; // Room starting row.
+                y = rand() % (n - k); // Room starting column.
+              }
+              else // Vertical.
+              {
+                x = rand() % (n - k); // Room starting row.
+                y = rand() % n; // Room starting column.
+              }
             }
 
-            printf("k: %d, x: %d, y: %d\n", k, x, y);
-
+            wall_build(n, room, x, y, k, orientation);
+            orientation = !orientation;
+            ++w;
           }
 
-          room_build(n, room, x, y, k, orientation);
-          orientation = !orientation;
-          ++wall_count;
+          for (int i = 0; i < n; ++i)
+          {
+            for (int j = 0; j < n; ++j)
+            {
+              if (i == 0 && j == 0)
+                fprintf(fp, "%%[\n");
+
+              if (j == 0)
+                fprintf(fp, "%%|");
+
+              fprintf(fp, "%d,", room[i][j]);
+            }
+            fprintf(fp, "\n");
+          }
+
+          fprintf(fp, "%%|];\n\n");
         }
 
+        // Try also without walls.
         for (int i = 0; i < n; ++i)
         {
           for (int j = 0; j < n; ++j)
-            fprintf(fp, "%d,", room[i][j]);
+          {
+            if (i == 0 && j == 0)
+              fprintf(fp, "%%[\n");
+            if (j == 0)
+              fprintf(fp, "%%|");
+
+            fprintf(fp, "0,");
+          }
+
           fprintf(fp, "\n");
         }
 
-        fprintf(fp, "\n");
+        fprintf(fp, "%%|];\n\n");
+        fclose(fp);
       }
-
-      fclose(fp);
-    }
-    else
-    {
-      printf("Cant open file\n");
-      return 0;
-    }
-
+      else
+        printf("Cant open file \"%s\"\n", filename);
+      }
   }
+
+  return 0;
 }
