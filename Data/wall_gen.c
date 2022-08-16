@@ -52,7 +52,7 @@ int main ()
 {
   for (int f = 0; f < 2; ++f)
   {
-    for (int n = 6; n < 16; n +=  2)
+    for (int n = 10; n <= 20; n +=  2)
     {
       int room[n][n];
       char filename[256];
