@@ -1,2 +1,2 @@
 # Room-Walk
-Identification of the minimal path from the access door located at cell (1, 1) and an exit door at cell (n, n) of the room.
+Identification of the shortest path from the access door (cell 1,1) to the exit door (cell n,n) of the room.
