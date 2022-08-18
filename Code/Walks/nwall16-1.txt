@@ -1,0 +1,43 @@
+% Generated FlatZinc statistics:
+%%%mzn-stat: paths=0
+%%%mzn-stat: flatBoolVars=2110
+%%%mzn-stat: flatIntVars=1075
+%%%mzn-stat: flatBoolConstraints=1238
+%%%mzn-stat: flatIntConstraints=3059
+%%%mzn-stat: evaluatedReifiedConstraints=4085
+%%%mzn-stat: eliminatedImplications=197
+%%%mzn-stat: method="minimize"
+%%%mzn-stat: flatTime=0.250569
+%%%mzn-stat-end
+1 . . . . . . . . . . . . . . . 
+1 . . . . . . . . . . . . . . . 
+1 W W W W W W W . . . . . . . . 
+1 1 1 . . . . W W W W W . . . . 
+W . 1 . . . . . . . . . . . . . 
+W W 1 . . . . . . . . . . . . . 
+. W 1 . . W W W . . . . . . . . 
+. W 1 . . . . . . . . . . . . . 
+. W 1 . . . . . . . . . . W . . 
+. W 1 . . . . . . . . . . W . . 
+. W 1 W W W W W W W . . . W W . 
+. W 1 . W W W W . . W . W W . W 
+. . 1 . . . . . . W W . W W . . 
+W . 1 . . . . . . W W . W W . W 
+. . 1 W W . . . . . . . . . . W 
+. . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Length: 31, turns: 3, free variables: 200
+----------
+==========
+%%%mzn-stat: initTime=0.020093
+%%%mzn-stat: solveTime=0.117031
+%%%mzn-stat: solutions=2
+%%%mzn-stat: variables=3594
+%%%mzn-stat: propagators=4344
+%%%mzn-stat: propagations=975894
+%%%mzn-stat: nodes=1229
+%%%mzn-stat: failures=560
+%%%mzn-stat: restarts=0
+%%%mzn-stat: peakDepth=105
+%%%mzn-stat-end
+%%%mzn-stat: nSolutions=1
+%%%mzn-stat-end

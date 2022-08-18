@@ -1,0 +1,25 @@
+% Generated FlatZinc statistics:
+%%%mzn-stat: paths=0
+%%%mzn-stat: flatBoolVars=2335
+%%%mzn-stat: flatIntVars=1187
+%%%mzn-stat: flatBoolConstraints=1342
+%%%mzn-stat: flatIntConstraints=3407
+%%%mzn-stat: evaluatedReifiedConstraints=4845
+%%%mzn-stat: eliminatedImplications=191
+%%%mzn-stat: method="minimize"
+%%%mzn-stat: flatTime=0.229641
+%%%mzn-stat-end
+=====UNSATISFIABLE=====
+%%%mzn-stat: initTime=0.021689
+%%%mzn-stat: solveTime=3.76174
+%%%mzn-stat: solutions=0
+%%%mzn-stat: variables=4281
+%%%mzn-stat: propagators=4013
+%%%mzn-stat: propagations=30071052
+%%%mzn-stat: nodes=46597
+%%%mzn-stat: failures=23299
+%%%mzn-stat: restarts=0
+%%%mzn-stat: peakDepth=34
+%%%mzn-stat-end
+%%%mzn-stat: nSolutions=0
+%%%mzn-stat-end
