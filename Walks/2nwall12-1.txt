@@ -1,7 +1,0 @@
-% Generated FlatZinc statistics:
-%%%mzn-stat: paths=0
-%%%mzn-stat: evaluatedReifiedConstraints=810
-%%%mzn-stat: method="satisfy"
-%%%mzn-stat: flatTime=0.121319
-%%%mzn-stat-end
-=====UNSATISFIABLE=====
