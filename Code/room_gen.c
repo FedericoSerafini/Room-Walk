@@ -41,12 +41,12 @@ wall_build (const int n,
   if (orientation) // Horizontal orientation.
   {
     for (int j = 0; j < k; ++j)
-      room[x][y + j] = 1;
+      room[x][y + j] = k;
   }
   else // Vertical orientation.
   {
     for (int i = 0; i < k; ++i)
-      room[x + i][y] = 1;
+      room[x + i][y] = k;
   }
 }
 
