@@ -5,8 +5,8 @@
 . W . W . . W W W W 1 . . . . W . W W W 
 . W . W . . . . W . 1 1 1 1 1 W . W W . 
 W W . W W . W W W W W . W . 1 W W W W . 
-W . W W W W W . . . . . W . 1 1 W W W . 
-W . W W W W . W . . . . W . . 1 W W W . 
+W . W W W W W . . . . . W . 1 . W W W . 
+W . W W W W . W . . . . W . 1 1 W W W . 
 W . W W W W . W . . . . . W W 1 W W W . 
 W . W . W W . W . . . W . W W 1 W . W . 
 . . W . W W . W . . . W . W W 1 1 1 1 1 
@@ -19,7 +19,7 @@ W W W W W W W W W W . W . W W . W . . 1
 . W W W W W W W W W W . . . . . W . . 1 
 . W . . . . . . . . . . . . . W . . . 1 
 Length: 39, turns: 7
-% time elapsed: 4.42 s
+% time elapsed: 1.09 s
 ----------
 ==========
-% time elapsed: 4.42 s
+% time elapsed: 1.09 s

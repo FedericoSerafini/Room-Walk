@@ -15,7 +15,7 @@ W W W W W W W W W . . W . . W 1
 . . . . . W W W W . . . . . . 1 
 . . . . . . . . . . . . . . . 1 
 Length: 53, turns: 7
-% time elapsed: 272.90 s
+% time elapsed: 273.92 s
 ----------
 ==========
-% time elapsed: 272.90 s
+% time elapsed: 273.92 s

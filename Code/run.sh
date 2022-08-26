@@ -4,9 +4,8 @@
 gcc -g -Wall -Wextra -fsanitize=address room_gen.c -o room_gen
 
 binary_walk="minizinc --solver Gecode --output-time -t 900000 binary_room_walk.mzn"
-unsat_walk="minizinc --solver Gecode --output-time -t 10000 unsat_room_walk.mzn"
 
-max_size=18
+max_size=16
 instances=20
 
 start=`date +%s`
