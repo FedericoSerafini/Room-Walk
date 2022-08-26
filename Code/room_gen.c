@@ -66,8 +66,6 @@ int main (int argc, char **argv)
   srand(n + wall_number + instance);
 
   printf("n = %d;\n\n", n);
-  printf("w =\n");
-
 
   for (int i = 0; i < n; ++i)
     for (int j = 0; j < n; ++j)
@@ -123,6 +121,10 @@ int main (int argc, char **argv)
     orientation = !orientation;
     ++w;
   }
+
+  // Print.
+
+  printf("R =\n");
 
   for (int i = 0; i < n; ++i)
   {

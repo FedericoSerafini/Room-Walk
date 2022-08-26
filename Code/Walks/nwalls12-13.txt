@@ -1,0 +1,17 @@
+1 1 1 1 1 1 1 1 1 . . . 
+. . . W W W W W 1 . . . 
+W W W W . 1 1 1 1 . . . 
+. . . W . 1 W W . W W W 
+. . W W . 1 . W W . . W 
+W . W . . 1 . W W . . W 
+W . W . . 1 W W . . . W 
+. . W . . 1 . W . . . W 
+. . W . . 1 . W . . . W 
+. . W . . 1 . . . . . . 
+. . . . . 1 1 1 1 1 1 1 
+. . W W W W W . . . . 1 
+Length: 29, turns: 5
+% time elapsed: 0.26 s
+----------
+==========
+% time elapsed: 0.26 s

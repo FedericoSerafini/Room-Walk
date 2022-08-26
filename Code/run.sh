@@ -3,22 +3,26 @@
 # Compile.
 gcc -g -Wall -Wextra -fsanitize=address room_gen.c -o room_gen
 
-minizinc="minizinc --solver Gecode --output-time -t 600000 binary_room_walk.mzn"
+binary_walk="minizinc --solver Gecode --output-time -t 900000 binary_room_walk.mzn"
+unsat_walk="minizinc --solver Gecode --output-time -t 10000 unsat_room_walk.mzn"
+
+max_size=18
+instances=20
 
 start=`date +%s`
 
 # Create rooms with 2n walls.
-for n in {6..16..2}
+for ((n=6; n<=max_size; n=n+2));
 do
-  for i in {1..10..1}
+  for ((i=1; i<=instances; ++i));
   do
     echo 2nwalls: $n $i
     let x="2*n"
     ./room_gen $n $x $i > Rooms/2nwalls$n-$i.dzn;
-    startWalk=`date +%s`
-    $minizinc Rooms/2nwalls$n-$i.dzn > Walks/2nwalls$n-$i.txt
-    endWalk=`date +%s`
-    if [ $((endWalk-startWalk)) -ge 600 ]
+    start_binary=`date +%s`
+    $binary_walk Rooms/2nwalls$n-$i.dzn > Walks/2nwalls$n-$i.txt
+    end_binary=`date +%s`
+    if [ $((start_binary-end_binary)) -ge 900 ]
     then
       echo "Warning: exceeded time limit"
       exit 1
@@ -27,16 +31,16 @@ do
 done
 
 # Create rooms with n walls.
-for n in {6..16..2}
+for ((n=6; n<=max_size; n=n+2));
 do
-  for i in {1..10..1}
+  for ((i=1; i<=instances; ++i));
   do
     echo nwalls: $n $i
     ./room_gen $n $n $i > Rooms/nwalls$n-$i.dzn;
-    startWalk=`date +%s`
-    $minizinc Rooms/nwalls$n-$i.dzn > Walks/nwalls$n-$i.txt
-    endWalk=`date +%s`
-    if [ $((endWalk-startWalk)) -ge 600 ]
+    start_binary=`date +%s`
+    $binary_walk Rooms/nwalls$n-$i.dzn > Walks/nwalls$n-$i.txt
+    end_binary=`date +%s`
+    if [ $((end_binary-start_binary)) -ge 900 ]
     then
       echo "Warning: exceeded time limit"
       exit 1
@@ -47,4 +51,4 @@ done
 end=`date +%s`
 echo $((end-start))
 
-python3 plot.py
+python3 plot.py $max_size $instances

@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import sys
 
 unsat_times = []
 sat_times = []
@@ -6,12 +7,15 @@ sat_times = []
 solve_times_n = []
 solve_times_2n = []
 
-for n in range(6, 18, 2):
+max_size = int(sys.argv[1]) +2
+instances = int(sys.argv[2]) +1
+
+for n in range(6, max_size, 2):
   unsat_t = 0.0
   sat_t = 0.0
   solve_n = 0.0
   solve_2n = 0.0
-  for i in range(1, 11):
+  for i in range(1, instances):
     for w in range(1, 3):
       if w == 1:
         filename = "nwalls" + str(n) + "-" + str(i)
@@ -52,38 +56,30 @@ for n in range(6, 18, 2):
   solve_times_2n.append(solve_2n)
 
 x = []
-for i in range(6, 18, 2):
+for i in range(6, max_size, 2):
   x.append(i)
 
-# n walls.
-plt.title("n walls")
+# n and 2n walls.
+#plt.title("n vs 2n walls")
 plt.xlabel("Room size")
 plt.ylabel("Max time (s)")
-plt.plot(x, solve_times_n, marker='o')
+plt.plot(x, solve_times_n, label="n walls", marker='o')
+plt.plot(x, solve_times_2n, label="2n walls", marker='o')
 plt.yscale('log')
 plt.axhline(y=300, color = 'orange', linestyle = '--', label='5 min threshold')
+plt.axhline(y=600, color = 'violet', linestyle = '--', label='10 min threshold')
 plt.legend(loc='center left')
-plt.savefig('time-n.png', dpi=300)
-plt.clf()
-
-# 2n walls.
-plt.title("2n walls")
-plt.plot(x, solve_times_2n, marker='o')
-plt.xlabel("Room size")
-plt.ylabel("Max time (s)")
-plt.yscale('log')
-plt.axhline(y=300, color = 'orange', linestyle = '--', label='5 min threshold')
-plt.legend(loc='center left')
-plt.savefig('time-2n.png', dpi=300)
+plt.savefig('n-2n.png', dpi=300)
 plt.clf()
 
 # Sat/unsat time.
-plt.title("Sat/unsat")
+#plt.title("Sat vs unsat")
 plt.xlabel("Room size")
 plt.ylabel("Max time (s)")
 plt.plot(x, sat_times, label='Sat', marker='o')
 plt.plot(x, unsat_times, "-r", label='Unsat', marker='o')
 plt.yscale('log')
 plt.axhline(y=300, color = 'orange', linestyle = '--', label='5 min threshold')
+plt.axhline(y=600, color = 'violet', linestyle = '--', label='10 min threshold')
 plt.legend(loc='center left')
 plt.savefig('sat-unsat.png', dpi=300)
