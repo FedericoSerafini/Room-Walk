@@ -1,4 +1,4 @@
-%include "Rooms/nwalls18-6.dzn";
+include "Rooms/nwalls18-19.dzn";
 
 int: n;                                % Room size.
 array [1..n, 1..n] of int: R;          % Room.
@@ -88,7 +88,7 @@ int_search(
   P,
   dom_w_deg,
   indomain_min
-)::restart_geometric(n,1)
+)::restart_geometric(n, 1)
 minimize length^2 + turns;
 
 output [

@@ -16,4 +16,4 @@ Length: 27, turns: 1
 % time elapsed: 0.13 s
 ----------
 ==========
-% time elapsed: 0.13 s
+% time elapsed: 0.14 s

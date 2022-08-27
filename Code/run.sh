@@ -3,9 +3,9 @@
 # Compile.
 gcc -g -Wall -Wextra -fsanitize=address room_gen.c -o room_gen
 
-binary_walk="minizinc --solver Gecode --output-time -t 900000 binary_room_walk.mzn"
+binary_walk="minizinc --solver Gecode --output-time -t 1200000 binary_room_walk.mzn"
 
-max_size=16
+max_size=18
 instances=20
 
 start=`date +%s`
@@ -21,7 +21,7 @@ do
     start_binary=`date +%s`
     $binary_walk Rooms/2nwalls$n-$i.dzn > Walks/2nwalls$n-$i.txt
     end_binary=`date +%s`
-    if [ $((start_binary-end_binary)) -ge 900 ]
+    if [ $((start_binary-end_binary)) -ge 1200 ]
     then
       echo "Warning: exceeded time limit"
       exit 1
@@ -39,7 +39,7 @@ do
     start_binary=`date +%s`
     $binary_walk Rooms/nwalls$n-$i.dzn > Walks/nwalls$n-$i.txt
     end_binary=`date +%s`
-    if [ $((end_binary-start_binary)) -ge 900 ]
+    if [ $((end_binary-start_binary)) -ge 1200 ]
     then
       echo "Warning: exceeded time limit"
       exit 1
