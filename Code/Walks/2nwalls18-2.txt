@@ -1,2 +1,2 @@
 =====UNSATISFIABLE=====
-% time elapsed: 0.19 s
+% time elapsed: 0.18 s

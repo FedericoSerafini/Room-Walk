@@ -1,3 +1,5 @@
+%include "Rooms/nwalls18-19.dzn";
+
 int: n;                                % Room size.
 array [1..n, 1..n] of int: R;          % Room.
 array [1..n+2, 1..n+2] of var 0..1: P; % Path (decision variables).
@@ -78,6 +80,8 @@ constraint forall(i, j in 2..n)
     P[i,j-1] + P[i+1,j-1] <= 4
 );
 
+constraint turns < length;
+
 %%%% Search strategy. %%%%
 
 solve
@@ -110,7 +114,9 @@ output [
        ++
        ["Length: " ++ show(length)]
        ++
-       [", turns: " ++ show(turns)];
+       [", turns: " ++ show(turns)]
+       ++
+       ["\nwcells/variables: " ++ show(sum(i, j in 1..n)(R[i,j])) ++ "/" ++ show(n^2)];
 
 %%%% Chrono walk. %%%%
 

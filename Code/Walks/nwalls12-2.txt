@@ -3,15 +3,16 @@
 1 . . . W . . W . . . . 
 1 1 1 1 1 1 . W . . . . 
 W W . W W 1 . W . . . . 
-. . W 1 1 1 W . . . . . 
-. . W 1 . . W . W W W . 
+. . W . . 1 W . . . . . 
+. . W 1 1 1 W . W W W . 
 . . W 1 . W W W . . . . 
 . . . 1 W W W W W . . . 
 . . . 1 1 1 1 1 1 1 1 1 
 . . . . . . . . . . . 1 
 . . W W W W . . . . . 1 
 Length: 27, turns: 6
-% time elapsed: 1.09 s
+wcells/variables: 35/144
+% time elapsed: 0.35 s
 ----------
 ==========
-% time elapsed: 1.09 s
+% time elapsed: 0.35 s

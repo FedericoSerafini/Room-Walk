@@ -7,17 +7,18 @@ W . . . . . W . . W . . . . . W 1 .
 . W W W . . . . . W . W . . . . 1 W 
 . W . W . . . W W W W W W W W . 1 W 
 . W . W W W W W W W W . . . . . 1 W 
-W . . W . W W W W W W W W . . W 1 . 
-W . . W W . . . . . . . . W . W 1 . 
-W . . . W . W W W W W W . . . . 1 . 
-W . . . W . W . . . . . . . . . 1 . 
-W . . . W . . . . . W . . . . . 1 1 
+W . . W . W W W W W W W W . . W 1 1 
+W . . W W . . . . . . . . W . W . 1 
+W . . . W . W W W W W W . . . . . 1 
+W . . . W . W . . . . . . . . . . 1 
+W . . . W . . . . . W . . . . . . 1 
 W . . W W W W W W . . . . W . . W 1 
 W . . . . . . W W W W W W W W . W 1 
 W . . . . . W . . . . . . . . . W 1 
 . W . . . . . . . W W W W W W . . 1 
 Length: 37, turns: 7
-% time elapsed: 2.48 s
+wcells/variables: 133/324
+% time elapsed: 1.49 s
 ----------
 ==========
-% time elapsed: 2.48 s
+% time elapsed: 1.49 s

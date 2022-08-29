@@ -15,7 +15,8 @@ W W W W W . W . W W . W W . W 1
 . . . . . . W . . . W . . . . 1 
 . W W W W W W W . . W W W . . 1 
 Length: 33, turns: 4
-% time elapsed: 0.47 s
+wcells/variables: 97/256
+% time elapsed: 0.43 s
 ----------
 ==========
-% time elapsed: 0.47 s
+% time elapsed: 0.43 s

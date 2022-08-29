@@ -13,6 +13,7 @@ W . . . . W . . . 1 W . W .
 . . . . . . . . . 1 . . W . 
 . . . . . . . . . 1 1 1 1 1 
 Length: 27, turns: 2
+wcells/variables: 30/196
 % time elapsed: 0.64 s
 ----------
 ==========

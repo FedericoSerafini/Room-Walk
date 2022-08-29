@@ -7,7 +7,8 @@
 1 W . W W . . . 
 1 1 1 1 1 1 1 1 
 Length: 15, turns: 1
-% time elapsed: 0.07 s
+wcells/variables: 19/64
+% time elapsed: 0.08 s
 ----------
 ==========
-% time elapsed: 0.07 s
+% time elapsed: 0.08 s
