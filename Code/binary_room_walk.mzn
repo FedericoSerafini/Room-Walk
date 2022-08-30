@@ -80,8 +80,6 @@ constraint forall(i, j in 2..n)
     P[i,j-1] + P[i+1,j-1] <= 4
 );
 
-constraint turns < length;
-
 %%%% Search strategy. %%%%
 
 solve
