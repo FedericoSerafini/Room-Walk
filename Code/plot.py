@@ -101,7 +101,7 @@ for i in range(6, max_size, 2):
 # n and 2n walls.
 #plt.title("n vs 2n walls")
 plt.xlabel("Room size")
-plt.ylabel("Max time (s)")
+plt.ylabel("Max time [s]")
 plt.plot(x, solve_times_n, label="n walls", marker='o')
 plt.plot(x, solve_times_2n, label="2n walls", marker='o')
 plt.yscale('log')
@@ -114,7 +114,7 @@ plt.clf()
 # Sat/unsat time.
 #plt.title("Sat vs unsat")
 plt.xlabel("Room size")
-plt.ylabel("Max time (s)")
+plt.ylabel("Max time [s]")
 plt.plot(x, sat_times, label='Sat', marker='o')
 plt.plot(x, unsat_times, "-r", label='Unsat', marker='o')
 plt.yscale('log')
