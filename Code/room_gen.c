@@ -5,6 +5,10 @@
 #include <limits.h>
 #include <time.h>
 
+/*
+  Check if a wall of dimension k fits at coordinates x,y with the specified
+  orientation.
+*/
 bool
 wall_fits (const int n,
            const int room[n][n],
@@ -21,19 +25,31 @@ wall_fits (const int n,
   if (orientation) // Horizontal orientation.
   {
     for (int j = 0; j < k; ++j)
+    {
       if (room[x][y +j] > 0)
+      {
         return false;
+      }
+    }
   }
   else // Vertical orientation.
   {
     for (int i = 0; i < k; ++i)
+    {
       if (room[x + i][y] > 0)
+      {
         return false;
+      }
+    }
   }
 
   return true;
 }
 
+/*
+  Build a wall of dimension k at coordinates x,y with the specified
+  orientation.
+*/
 void
 wall_build (const int n,
             int room[n][n],
@@ -45,12 +61,16 @@ wall_build (const int n,
   if (orientation) // Horizontal orientation.
   {
     for (int j = 0; j < k; ++j)
+    {
       room[x][y + j] = 1; // 1 or k.
+    }
   }
   else // Vertical orientation.
   {
     for (int i = 0; i < k; ++i)
+    {
       room[x + i][y] = 1; // 1 or k.
+    }
   }
 }
 
@@ -72,16 +92,24 @@ int main (int argc, char **argv)
   printf("n = %d;\n\n", n);
 
   for (int i = 0; i < n; ++i)
+  {
     for (int j = 0; j < n; ++j)
+    {
       room[i][j] = 0;
+    }
+  }
 
   // Randomly select the initial wall orientation.
   bool orientation = false;
 
   if ((rand() / (double) INT_MAX) > 0.5)
+  {
     orientation = true;
+  }
   else
+  {
     orientation = false;
+  }
 
   int w = 0;
   int x, y = 0;
@@ -89,6 +117,7 @@ int main (int argc, char **argv)
   while (w < wall_number)
   {
     int k = rand() % (n / 2) + 1;
+
     if (orientation) // Horizontal.
     {
       x = rand() % n; // Room starting row.
@@ -103,7 +132,9 @@ int main (int argc, char **argv)
     while (!wall_fits(n, room, x, y, k, orientation))
     {
       if (k > 1)
+      {
         --k;
+      }
 
       // Flip the orientation.
       orientation = !orientation;
@@ -135,13 +166,20 @@ int main (int argc, char **argv)
     for (int j = 0; j < n; ++j)
     {
       if (i == 0 && j == 0)
+      {
         printf("[|");
+      }
       if (i != 0 && j == 0)
+      {
         printf(" |");
+      }
+
       printf("%d,", room[i][j]);
     }
+
     printf("\n");
   }
+
   printf(" |];\n\n");
 
   return 0;
