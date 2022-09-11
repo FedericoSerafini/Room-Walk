@@ -8,12 +8,15 @@
 bool
 wall_fits (const int n,
            const int room[n][n],
-           const int x, const int y, const int k,
+           const int x, const int y,
+           const int k,
            const bool orientation)
 {
 
   if (x == 0 && y == 0)
+  {
     return false;
+  }
 
   if (orientation) // Horizontal orientation.
   {
@@ -34,7 +37,8 @@ wall_fits (const int n,
 void
 wall_build (const int n,
             int room[n][n],
-            const int x, const int y, const int k,
+            const int x, const int y,
+            const int k,
             const bool orientation)
 {
 
