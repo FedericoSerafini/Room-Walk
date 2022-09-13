@@ -1,7 +1,8 @@
+#include "room_gen.h"
+
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <limits.h>
 #include <time.h>
 
